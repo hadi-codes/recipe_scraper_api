@@ -55,4 +55,14 @@ def restructure_recipe(recipe: dict) -> dict:
         new_recipe["servings"] = int(yield_number)
     else:
         new_recipe["servings"] = 1
+    new_recipe["difficulty"] = difficulty_calc(len(new_recipe["instructions"]))
     return new_recipe
+
+
+def difficulty_calc(instructionsNum) -> str:
+    if instructionsNum < 6:
+        return "easy"
+    elif instructionsNum < 15:
+        return "medium"
+    else:
+        return "hard"
